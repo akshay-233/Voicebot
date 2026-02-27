@@ -1,0 +1,37 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title>Azure Realtime Voice Bot (Flask WS)</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <style>
+      body { font-family: system-ui, sans-serif; margin: 16px; }
+      button { padding: 10px 14px; margin-right: 8px; }
+      #log { white-space: pre-wrap; border: 1px solid #ddd; padding: 10px; border-radius: 8px; height: 240px; overflow: auto; }
+      #text { white-space: pre-wrap; border: 1px solid #ddd; padding: 10px; border-radius: 8px; min-height: 100px; }
+      .row { display: flex; gap: 12px; flex-wrap: wrap; align-items: center; }
+      .pill { padding: 4px 10px; border-radius: 999px; background: #f2f2f2; }
+    </style>
+  </head>
+  <body>
+    <h2>Azure GPT-4o-mini Realtime (Push-to-talk)</h2>
+
+    <div class="row">
+      <button id="btnStart">Start</button>
+      <button id="btnStop" disabled>Stop</button>
+      <span class="pill">Mic → PCM16 @ <span id="sr">{{ sample_rate }}</span> Hz</span>
+      <span class="pill" id="wsState">WS: disconnected</span>
+    </div>
+
+    <h3>Assistant text</h3>
+    <div id="text"></div>
+
+    <h3>Log</h3>
+    <div id="log"></div>
+
+    <script>
+      window.TARGET_SAMPLE_RATE = {{ sample_rate }};
+    </script>
+    <script src="/static/client.js"></script>
+  </body>
+</html>
